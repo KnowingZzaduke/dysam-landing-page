@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+import logo1 from "../assets/logos/1.png";
+import logo2 from "../assets/logos/2.png";
+import logo3 from "../assets/logos/3.png";
+import logo4 from "../assets/logos/4.png";
+import logo5 from "../assets/logos/5.png";
+import motoBombas from "../assets/motobombas.png";
+import hidroFlow from "../assets/hidro-flow.png";
+import bombas from "../assets/bombas.png";
+import mantenimiento from "../assets/mantenimiento.png";
+import tanquesDeAgua from "../assets/tanques-de-agua.png";
+import tablero from "../assets/tablero.png";
+const services = [
+  {
+    id: 1,
+    service:
+      "Mantenimiento preventivo de motobombas para prolongar la vida de los equipos y evitar.",
+    img: motoBombas,
+  },
+  {
+    id: 2,
+    service:
+      "Mantenimiento correctivo para reparar equipos o partes y que no hayan largos periodos de falta de agua.",
+    img: hidroFlow,
+  },
+  {
+    id: 2,
+    service: "Lavado de tanques de agua sin riesgo de daños ",
+    img: bombas,
+  },
+  {
+    id: 1,
+    service: "Suministro e instalación de repuestos de calidad y con garantía",
+    img: mantenimiento,
+  },
+  {
+    id: 1,
+    service:
+      "Instalación de sistemas hidráulicos y de equipos de bombeo ",
+    img: tanquesDeAgua,
+  },
+  {
+    id: 2,
+    service:
+      "Venta de partes y equipos hidráulicos",
+    img: tablero,
+  },
+];
+---
+
+<section class="bg-white py-20">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl md:text-5xl tracking-wide font-bold text-center mb-12">
+      Servicios
+    </h2>
+    <div class="grid md:grid-cols-2 lg:max-w-[800px] mx-auto">
+      {
+        services.map((service) => (
+          <div
+            class={`transition delay-150 duration-300 ease-in-out hover:cursor-pointer hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 flex flex-col rounded lg:rounded-none lg:flex-row gap-6 items-center lg:gap-4 justify-center mt-4 text-white p-6 ${service.id % 2 == 0 ? "bg-blue-300" : "bg-DysamBlue"}`}
+          >
+            <p>{service.service}</p>
+            <Image
+              src={service.img}
+              alt="partner.name"
+              class="rounded-lg"
+              width={service.img === mantenimiento ? 79  : 180}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

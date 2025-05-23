@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+import dysamTanques from "../assets/Dysam-tanques.jpg";
+---
+
+<section class="bg-white py-20">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row gap-12">
+      <div class="md:w-1/2">
+        <Image
+          src={dysamTanques}
+          alt="Grandmother and granddaughter laughing together while playing on the grass"
+          class="rounded-lg shadow-xl w-11/12 h-full"
+          width={600}
+          height={400}
+        />
+      </div>
+      <div class="md:w-1/2">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-wide">
+          Dysam es tu empresa más amigable
+        </h2>
+        <p class="text-lg text-gray-700">
+          En Diseño y Servicios Ambientales ofrecemos una amplia gama de
+          productos y servicios enfocados en la calidad, respaldados por un
+          equipo altamente capacitado y comprometido con la satisfacción de
+          nuestros clientes. Nos especializamos en el diseño y construcción de
+          sistemas de tratamiento de aguas residuales, aplicando tecnologías de
+          última generación para atender las necesidades específicas de
+          condominios, urbanizaciones e industrias.
+          <br /> <br>
+          Desde nuestra fundación en 2014, hemos ejecutado más de 50 proyectos que
+          han representado soluciones reales y sostenibles para distintos sectores.
+          Nuestra experiencia nos permite actuar como aliados estratégicos en la
+          mejora de la calidad de vida, siempre en armonía con el medio ambiente.
+          <br> <br>
+          Nuestro propósito es brindar soluciones prácticas y efectivas a cada necesidad,
+          apoyándonos en nuestras habilidades técnicas y profesionales. Conformamos
+          un equipo comprometido que busca generar, con cada producto y servicio,
+          no solo resultados exitosos, sino también clientes felices de pertenecer
+          a nuestra empresa.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
