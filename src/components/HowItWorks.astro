@@ -11,7 +11,7 @@ const steps = [
     icon: FaEye,
     title: "Visión",
     description:
-      "La VISION nos lleva a ser para el 2020 una de las empresas líderes en el sector de la potabilización de aguas, e instalación y mantenimiento de los sistemas de abastecimiento de agua potable, siendo referentes de excelente servicio, confianza y calidad en el mercado, y proyectándonos a expandir nuestros servicios a otros departamentos del pais. ",
+      "La VISION nos lleva a ser para el 2030 una de las empresas líderes en el sector de la potabilización de aguas, e instalación y mantenimiento de los sistemas de abastecimiento de agua potable, siendo referentes de excelente servicio, confianza y calidad en el mercado, y proyectándonos a expandir nuestros servicios a otros departamentos del pais. ",
   },
   {
     icon: FaUserShield,
@@ -22,13 +22,13 @@ const steps = [
 ];
 ---
 
-<section class="py-20 bg-white">
+<section class="bg-DysamYellow py-20">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {
         steps.map((step, index) => (
           <div
-            class="bg-gray-100 p-8 rounded-lg text-center flex flex-col gap-4"
+            class="bg-white p-8 rounded-lg text-center flex flex-col gap-4"
             id={`step-${index.toString()}`}
           >
             <step.icon className="mx-auto text-4xl"/>

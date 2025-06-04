@@ -1,20 +1,26 @@
 ---
-import trabajador from '../assets/trabajador.jpg'
+import trabajador from "../assets/trabajador.jpg";
+import trabajadorBajando from "../assets/trabaador-bajando.jpg";
+import contador2 from "../assets/contador2-dysam.jpg";
+import { Image } from "astro:assets";
+
 const cards = [
   {
     text: "Somos EXPERTOS en el Diseño, Construcción, Operación, Asesoría y Mantenimiento de Sistemas de Tratamiento de Aguas.",
-    img: trabajador
+    img: trabajador,
   },
   {
     text: "Acompañamiento desde la planificación de sus proyectos, hasta su ejecución y seguimiento durante su puesta en Marcha.",
+    img: trabajadorBajando,
   },
   {
-    text: "Manejamos Contratos de Mantenimiento Individuales y a Largo Plazo",
+    text: "Manejamos Contratos de Mantenimiento Individuales y a Largo Plazo.",
+    img: contador2,
   },
 ];
 ---
 
-<section class="bg-green-600 py-20 relative overflow-hidden">
+<section class="py-20">
   <div class="absolute inset-0 z-0">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -31,13 +37,22 @@ const cards = [
   </div>
 
   <div class="flex flex-col items-center">
-    <h2 class="text-4xl md:text-5xl tracking-wide font-bold text-white text-center mb-12">
+    <h2
+      class="text-4xl md:text-5xl tracking-wide font-bold text-center mb-12"
+    >
       Recomendaciones
     </h2>
     <div class="grid grid-cols-3 gap-6">
       {
         cards.map((card) => (
-          <div class="w-[400px] h-[150px] mx-auto border-solid border-2 rounded p-6 bg-white">
+          <div class="w-[400px] flex flex-col gap-4 h-[430px] mx-auto border-solid border-2 rounded p-6 bg-white">
+            <Image
+              src={card.img}
+              alt="Mano con herramienta, centrada y de gran tamaño"
+              class="w-[348px] h-[261px] rounded object-containd"
+              width={1600}
+              height={787}
+            />
             <p class="text-lg text-center">"{card.text}"</p>
           </div>
         ))

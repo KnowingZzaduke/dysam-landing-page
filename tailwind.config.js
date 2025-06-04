@@ -13,6 +13,9 @@ export const theme = {
         600: "#0052A3",
       },
       DysamBlue: "rgb(61, 155, 233)",
+      DysamYellow: "rgb(222, 255, 79)",
+      softBlue: "#E6F0FA",
+      pastelCyan: "#DFF6FF",
     },
     fontFamily: {
       sans: ["Roboto", ..._fontFamily.sans],

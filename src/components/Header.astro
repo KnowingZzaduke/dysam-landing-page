@@ -3,32 +3,34 @@ import { Image } from "astro:assets";
 import logoImg from "../assets/dysamS.png";
 
 const navItems = [
-  { label: "Nosotros", href: "#" },
+  { label: "Servicios", href: "#servicios" },
   { label: "Dysam", href: "#" },
-  { label: "Contactos", href: "#" },
-  { label: "Llamar", href: "#" },
-  { label: "Servicios", href: "#" },
+  { label: "Recomendaciones", href: "#" },
+  { label: "Nosotros", href: "#" },
+  { label: "Contactar", href: "#" },
 ];
 ---
 
-<header class="bg-white shadow-md">
+<header class="bg-white shadow-md z-20 relative">
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
     <a href="/" class="flex font-serif items-center">
       <Image
         src={logoImg}
         alt="Company Logo Image"
         class="rounded-lg"
-        width={48}
-        height={48}
+        width={58}
+        height={58}
       />
-      <span class="ml-2 text-black font-extralight">Diseños y servicios ambientales</span>
+      <span class="ml-2 text-DysamBlue font-extralight"
+        >Diseños y servicios ambientales</span
+      >
     </a>
     <nav class="hidden md:flex space-x-6">
       {
         navItems.map((item) => (
           <a
             href={item.href}
-            class="text-gray-700 hover:text-primary-500 transition duration-150 ease-in-out"
+            class="text-gray-700 hover:text-primary-500 transition duration-150 ease-in-out hover:cursor-pointer"
           >
             {item.label}
           </a>
