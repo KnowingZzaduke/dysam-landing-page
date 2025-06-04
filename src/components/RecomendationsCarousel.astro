@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
 
 const cards = [
   {
-    text: "Somos EXPERTOS en el Diseño, Construcción, Operación, Asesoría y Mantenimiento de Sistemas de Tratamiento de Aguas.",
+    text: "Somos expertos en el Diseño, Construcción, Operación, Asesoría y Mantenimiento de Sistemas de Tratamiento de Aguas.",
     img: trabajador,
   },
   {
@@ -20,7 +20,7 @@ const cards = [
 ];
 ---
 
-<section class="py-20" id="recomendaciones">
+<section class="py-6 lg:py-20" id="recomendaciones">
   <div class="absolute inset-0 z-0">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@ const cards = [
               width={1600}
               height={787}
             />
-            <p class="text-lg text-center">"{card.text}"</p>
+            <p class="text-base text-center">"{card.text}"</p>
           </div>
         ))
       }

@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import logoImg from "../assets/dysamS.png";
 
 // const footerLinks = [
@@ -17,19 +17,25 @@ import logoImg from "../assets/dysamS.png";
 <footer class="bg-gray-900 text-DysamBlue py-12">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-      <div>
-        <Image 
-          src={logoImg} 
-          alt="Company Logo Image" 
-          class="rounded-lg h-[50px]"
-          width={48}
-          height={48}
+      <a href="/" class="flex flex-col gap-2">
+        <Image
+          src={logoImg}
+          alt="Logo de Dysam"
+          class="rounded-lg"
+          width={58}
+          height={58}
         />
-        <p class="font-serif font-bold pt-2 text-xl">Dysam</p>
-      </div>
+        <span class=" text-DysamBlue font-extrabold text-sm sm:text-base">
+          Diseños y Servicios Ambientales
+        </span>
+      </a>
     </div>
-    <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
-      <p class="text-sm mb-4 md:mb-0">&copy; 2025 Dysam S.A.S. Todos los derechos reservados.</p>
+    <div
+      class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center"
+    >
+      <p class="text-sm mb-4 md:mb-0">
+        &copy; 2025 Dysam S.A.S. Todos los derechos reservados.
+      </p>
     </div>
   </div>
 </footer>
