@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
 import logoImg from "../assets/dysamS.png";
-import { FaBars, FaTimes } from "react-icons/fa"; // Importamos FaBars y FaTimes
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const navItems = [
   { label: "Servicios", href: "#servicios" },
   { label: "Dysam", href: "#dysam" },
-  { label: "Recomendaciones", href: "#recomendaciones" }, // Asumiendo que es una página
+  { label: "Recomendaciones", href: "#recomendaciones" },
   { label: "Nosotros", href: "#nosotros" },
   { label: "Contactar", href: "#contactar" },
 ];
@@ -14,7 +14,6 @@ const navItems = [
 
 <header class="bg-white shadow-md z-50 sticky top-0">
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-    {/* Logo y Nombre de la Compañía */}
     <a href="/" class="flex font-serif items-center">
       <Image
         src={logoImg}
@@ -27,9 +26,7 @@ const navItems = [
         Diseños y Servicios Ambientales
       </span>
     </a>
-
-    {/* Navegación de Escritorio */}
-    <nav class="hidden md:flex space-x-4 lg:space-x-6"> {/* Ajuste de space-x */}
+    <nav class="hidden md:flex space-x-4 lg:space-x-6">
       {navItems.map((item) => (
         <a
           href={item.href}
@@ -39,9 +36,7 @@ const navItems = [
         </a>
       ))}
     </nav>
-
-    {/* Botón Hamburguesa - Visible en Móvil */}
-    <div class="md:hidden"> {/* Contenedor para el botón en móviles */}
+    <div class="md:hidden">
       <button
         id="mobile-menu-button"
         type="button"
@@ -55,9 +50,6 @@ const navItems = [
       </button>
     </div>
   </div>
-
-  {/* Menú de Navegación Móvil - Oculto por defecto, se muestra al alternar */}
-  {/* Posicionado absolutamente relativo al header para ocupar todo el ancho */}
   <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-gray-200">
     <nav class="flex flex-col space-y-1 px-2 pt-2 pb-3 sm:px-3">
       {navItems.map((item) => (
@@ -68,13 +60,6 @@ const navItems = [
           {item.label}
         </a>
       ))}
-      {/* Aquí podrías añadir el botón de "Contáctanos" si quieres que aparezca en el menú móvil también */}
-      {/* <a
-        href="/#"
-        class="mt-2 block bg-primary-500 text-white text-center px-4 py-2 rounded-md hover:bg-primary-600 transition duration-150 ease-in-out"
-      >
-        Contáctanos
-      </a> */}
     </nav>
   </div>
 </header>
@@ -89,7 +74,8 @@ const navItems = [
     menuButton.addEventListener('click', () => {
       const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
       
-      menuButton.setAttribute('aria-expanded', !isExpanded);
+-      menuButton.setAttribute('aria-expanded', String(!isExpanded)); 
++      menuButton.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false'); // Cambio aquí
       mobileMenu.classList.toggle('hidden');
       iconOpen.classList.toggle('hidden');
       iconClose.classList.toggle('hidden');
@@ -101,11 +87,9 @@ const navItems = [
       }
     });
 
-    // Opcional: Cerrar el menú cuando se hace clic en un enlace (útil para SPAs o enlaces ancla)
     const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
     mobileMenuLinks.forEach(link => {
       link.addEventListener('click', () => {
-        // Solo cierra si el menú está expandido
         if (menuButton.getAttribute('aria-expanded') === 'true') {
           menuButton.setAttribute('aria-expanded', 'false');
           mobileMenu.classList.add('hidden');
