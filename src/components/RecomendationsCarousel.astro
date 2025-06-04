@@ -20,7 +20,7 @@ const cards = [
 ];
 ---
 
-<section class="py-20">
+<section class="py-20" id="recomendaciones">
   <div class="absolute inset-0 z-0">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -42,14 +42,14 @@ const cards = [
     >
       Recomendaciones
     </h2>
-    <div class="grid grid-cols-3 gap-6">
+    <div class="grid lg:grid-cols-3 gap-6">
       {
         cards.map((card) => (
-          <div class="w-[400px] flex flex-col gap-4 h-[430px] mx-auto border-solid border-2 rounded p-6 bg-white">
+          <div class="w-[400px] flex flex-col items-center gap-4 h-[430px] mx-auto border-solid border-2 rounded p-6 bg-white">
             <Image
               src={card.img}
               alt="Mano con herramienta, centrada y de gran tamaño"
-              class="w-[348px] h-[261px] rounded object-containd"
+              class="w-[300px] lg:w-[348px] h-[261px] rounded object-containd"
               width={1600}
               height={787}
             />

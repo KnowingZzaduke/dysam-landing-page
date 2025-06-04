@@ -22,8 +22,11 @@ const steps = [
 ];
 ---
 
-<section class="bg-DysamYellow py-20">
+<section class="bg-DysamYellow py-20" id="nosotros">
   <div class="container mx-auto px-4">
+    <h2 class="text-4xl md:text-5xl tracking-wide font-bold text-center mb-12">
+      Nosotros
+    </h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {
         steps.map((step, index) => (
@@ -31,7 +34,7 @@ const steps = [
             class="bg-white p-8 rounded-lg text-center flex flex-col gap-4"
             id={`step-${index.toString()}`}
           >
-            <step.icon className="mx-auto text-4xl"/>
+            <step.icon className="mx-auto text-4xl" />
             <h3 class="tracking-widek text-xl">{step.title}</h3>
             <p class="text-gray-700 text-sm font-bold">{step.description}</p>
           </div>
