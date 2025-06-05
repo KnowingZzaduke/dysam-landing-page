@@ -12,110 +12,95 @@ import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
         <div class="flex flex-col items-center lg:items-start gap-2 text-sm text-DysamBlue">
           <p>Tr. 33sur 32B53 - Envigado - Colombia</p>
           <div class="flex gap-2 items-center">
-            <FaPhoneAlt />
-            <p>604 204 68 69</p>
+            <FaPhoneAlt /><p>604 204 68 69</p>
           </div>
           <div class="flex gap-2 items-center">
-            <FaPhoneAlt />
-            <p>3004298113</p>
+            <FaPhoneAlt /><p>3004298113</p>
           </div>
           <div class="flex gap-2 items-center">
-            <FaPhoneAlt />
-            <p>3007560411</p>
+            <FaPhoneAlt /><p>3007560411</p>
           </div>
           <div class="flex gap-2 items-center">
-            <FaEnvelope />
-            <p>supervisortecnico@dysam.com.co</p>
+            <FaEnvelope /><p>supervisortecnico@dysam.com.co</p>
           </div>
           <div class="flex gap-2 items-center">
-            <FaEnvelope />
-            <p>mantenimiento@dysam.com.co</p>
+            <FaEnvelope /><p>mantenimiento@dysam.com.co</p>
           </div>
         </div>
       </div>
+
       <div class="lg:w-2/3">
-        <form class="space-y-6">
+        <form id="contact-form" class="space-y-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label
-                for="firstName"
-                class="block text-sm font-medium text-gray-700 mb-1"
-                >Primer nombre*</label
-              >
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-              />
+              <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">Primer nombre*</label>
+              <input type="text" id="firstName" name="firstName" required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" />
             </div>
             <div>
-              <labels
-                for="lastName"
-                class="block text-sm font-medium text-gray-700 mb-1"
-                >Apellido*</labels
-              >
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-              />
+              <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Apellido*</label>
+              <input type="text" id="lastName" name="lastName" required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" />
             </div>
           </div>
           <div>
-            <label
-              for="workEmail"
-              class="block text-sm font-medium text-gray-700 mb-1"
-              >Correo*</label
-            >
-            <input
-              type="email"
-              id="workEmail"
-              name="workEmail"
-              required
-              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-            />
+            <label for="workEmail" class="block text-sm font-medium text-gray-700 mb-1">Correo*</label>
+            <input type="email" id="workEmail" name="workEmail" required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" />
           </div>
           <div>
-            <label
-              for="phoneNumber"
-              class="block text-sm font-medium text-gray-700 mb-1"
-              >Teléfono*</label
-            >
-            <input
-              type="tel"
-              id="phoneNumber"
-              name="phoneNumber"
-              required
-              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-            />
+            <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1">Teléfono*</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" />
           </div>
           <div>
-            <label
-              for="message"
-              class="block text-sm font-medium text-gray-700 mb-1"
-              >Cómo podemos ayudarte?</label
-            >
-            <textarea
-              id="message"
-              name="message"
-              rows="4"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-            ></textarea>
+            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Cómo podemos ayudarte?</label>
+            <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
           </div>
+
+          <div id="status-message" class="text-sm font-medium mt-2"></div>
+
           <div>
-            <button
-              type="submit"
-              class="px-6 py-3 bg-green-600 text-white text-sm font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-            >
-              Enviar
-            </button>
+            <button type="submit" class="px-6 py-3 bg-green-600 text-white text-sm font-medium rounded-md hover:bg-green-700">Enviar</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+<script type="module">
+  import emailjs from "https://cdn.skypack.dev/@emailjs/browser";
+
+  const form = document.getElementById("contact-form");
+  const statusMessageElement = document.getElementById("status-message");
+
+  if (form && statusMessageElement) {
+    emailjs.init("9Es0kUSqg2Dv28YFx"); // Tu Public Key
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      statusMessageElement.textContent = "";
+      statusMessageElement.className = "text-sm font-medium mt-2";
+
+      const submitButton = form.querySelector("button[type='submit']");
+      const originalButtonText = submitButton.textContent;
+      submitButton.disabled = true;
+      submitButton.textContent = "Enviando...";
+
+      emailjs
+        .sendForm("service_tlclszm", "template_vud6j0p", form)
+        .then(() => {
+          statusMessageElement.textContent = "¡Mensaje enviado exitosamente!";
+          statusMessageElement.classList.add("text-green-600");
+          form.reset();
+        })
+        .catch((error) => {
+          console.error("Error al enviar:", error);
+          statusMessageElement.textContent = "Error al enviar el mensaje. Inténtalo más tarde.";
+          statusMessageElement.classList.add("text-red-600");
+        })
+        .finally(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+        });
+    });
+  }
+</script>

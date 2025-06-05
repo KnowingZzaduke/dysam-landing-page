@@ -1,35 +1,33 @@
 ---
 import { Image } from "astro:assets";
-import heroImg from "../assets/mano.webp";
+import dysamSinFondo from "../assets/dysam-no-fondo.png";
 ---
 
 <section
-  class="bg-DysamBlue py-10 md:py-16 lg:py-20 h-[400px] lg:min-h-screen flex items-center relative overflow-hidden"
+  class="bg-DysamBlue py-10 md:py-16 lg:py-20 lg:h-[400px] lg:min-h-screen flex flex-col lg:flex-row items-center relative overflow-hidden"
 >
   <div
     class="container mx-auto px-4 relative z-20 flex flex-col items-center justify-center text-center"
   >
     <div class="flex flex-col">
-      <span
-        class="text-lg md:text-xl mb-6 md:mb-8 text-white font-bold text-shadow-lg/30"
-      >
-        Instalación, mantenimiento y limpieza <br /> de bombas y tanques de agua
-      </span>
       <h1
         class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 md:mb-6 text-white text-shadow-lg/30 tracking-wider"
       >
         RÁPIDO Y CONFIABLE
       </h1>
+      <span
+        class="text-lg md:text-xl mb-6 md:mb-8 text-white font-bold text-shadow-lg/30"
+      >
+        Instalación, mantenimiento y limpieza <br /> de bombas y tanques de agua
+      </span>
     </div>
   </div>
 
-  <div
-    class="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 pointer-events-none w-full flex justify-center"
-  >
+  <div class="z-20">
     <Image
-      src={heroImg}
+      src={dysamSinFondo}
       alt="Mano con herramienta, centrada y de gran tamaño"
-      class="w-full h-auto max-h-[2580px] sm:max-h-[350px] md:max-h-[500px] lg:max-h-[787px] object-contain"
+      class="object-contain"
       width={1600}
       height={787}
     />
