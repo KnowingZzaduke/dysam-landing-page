@@ -1,0 +1,149 @@
+---
+// Componente Astro: ChatBotDysam.astro
+const {
+  icono = "💬",
+  color = "#25d366",
+  numeroCotizacion = "573007560411",
+  numeroAgenda = "573004298113",
+  numeroSoporte = "573004298113",
+  numeroTanques = "573007560411",
+  numeroCartera = "573244542275",
+  numeroPagos = "573244542275",
+  numeroGeneral = "573004298113",
+} = Astro.props;
+---
+
+<style define:vars={{ themeColor: color }}>
+  /* Estilos (sin cambios) */
+  .btnChatBot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--themeColor);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+  }
+  .chatBox {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 280px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 9998;
+    font-family: sans-serif;
+  }
+  .chatBox header {
+    background-color: var(--themeColor);
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  .chat-content {
+    padding: 10px;
+  }
+  .chat-option {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 6px 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .chat-option:hover {
+    background-color: #e0e0e0;
+  }
+</style>
+
+<button class="btnChatBot" id="dysam-chatbot-toggle">{icono}</button>
+
+<div class="chatBox" id="dysam-chatbot-box">
+  <header>🤖 Asistente Dysam</header>
+  <div class="chat-content">
+    <p>¡Hola! ¿Con qué área deseas comunicarte?</p>
+    <div class="chat-option" data-option="1">1️⃣ 💰 Cotización</div>
+    <div class="chat-option" data-option="2">2️⃣ 📅 Agendar visita</div>
+    <div class="chat-option" data-option="3">3️⃣ 🛠️ Soporte técnico</div>
+    <div class="chat-option" data-option="4">4️⃣ 🚿 Lavado de tanques</div>
+    <div class="chat-option" data-option="5">5️⃣ 💼 Cartera</div>
+    <div class="chat-option" data-option="6">6️⃣ 💳 Proveedores y pagos</div>
+  </div>
+</div>
+
+<script is:inline define:vars={{
+  numeroCotizacion,
+  numeroAgenda,
+  numeroSoporte,
+  numeroTanques,
+  numeroCartera,
+  numeroPagos,
+  numeroGeneral
+}}>
+  // Seleccionamos los elementos del DOM una sola vez
+  const toggleButton = document.getElementById('dysam-chatbot-toggle');
+  const chatBox = document.getElementById('dysam-chatbot-box');
+
+  // 1. Lógica para abrir y cerrar el menú
+  toggleButton.addEventListener('click', () => {
+    const isHidden = chatBox.style.display === 'none' || chatBox.style.display === '';
+    chatBox.style.display = isHidden ? 'block' : 'none';
+  });
+
+  // 2. Lógica para manejar los clics en las opciones (Delegación de eventos)
+  chatBox.addEventListener('click', (event) => {
+    // Buscamos el ancestro más cercano que sea una opción del chat
+    const optionElement = event.target.closest('.chat-option');
+    
+    // Si no se hizo clic en una opción, no hacemos nada
+    if (!optionElement) {
+      return;
+    }
+    
+    // Obtenemos el número de la opción desde el atributo 'data-option'
+    const option = optionElement.dataset.option;
+    
+    let numero = "";
+    let texto = "";
+
+    if (option === '1') {
+      numero = numeroCotizacion;
+      texto = "Hola 👋, me gustaría solicitar una cotización.\n🧾 Con gusto, te pondré en contacto con el área comercial para recibir atención personalizada.";
+    } else if (option === '2') {
+      numero = numeroAgenda;
+      texto = "Hola 📅, deseo agendar una visita técnica.\n🛠️ En breve serás atendido por nuestro equipo operativo.";
+    } else if (option === '3') {
+      numero = numeroSoporte;
+      texto = "Hola ⚙️, necesito asistencia técnica.\n📞 Te comunicaré con nuestro equipo de soporte especializado.";
+    } else if (option === '4') {
+      numero = numeroTanques;
+      texto = "Hola 🚿, requiero el servicio de lavado de tanques.\n🧼 Enseguida te conectamos con el área encargada de este servicio.";
+    } else if (option === '5') {
+      numero = numeroCartera;
+      texto = "Hola 💼, tengo una consulta relacionada con cartera.\nPor favor, comunícame con el área correspondiente.";
+    } else if (option === '6') {
+      numero = numeroPagos;
+      texto = "Hola 💳, soy proveedor o tengo una inquietud de pagos.\nAgradezco que me contacten con el área financiera.";
+    } else {
+      numero = numeroGeneral;
+      texto = "Hola, tengo una consulta general sobre los servicios de Dysam.";
+    }
+
+    // Si encontramos un número, construimos la URL y la abrimos
+    if (numero) {
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+      window.open(url, "_blank");
+    }
+  });
+</script>

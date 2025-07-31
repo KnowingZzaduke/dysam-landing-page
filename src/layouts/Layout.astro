@@ -1,7 +1,11 @@
 ---
+// src/layouts/Layout.astro (o como se llame tu layout principal)
+
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { FaWhatsapp } from "react-icons/fa";
+import ChatBotDysam from "../components/ChatBotDysam.astro"; // 1. Importa el nuevo componente
+
+// Ya no necesitas 'react-icons/fa' para el botón flotante
 const { title } = Astro.props;
 ---
 
@@ -20,16 +24,11 @@ const { title } = Astro.props;
     <Header />
     <main>
       <slot />
-      <a
-        href="https://wa.me/573004298113"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="fixed bottom-5 left-5 z-50 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition duration-300 flex items-center justify-center w-14 h-14"
-        aria-label="WhatsApp"
-      >
-        <FaWhatsapp className="text-3xl" />
-      </a>
-    </main>
+      
+      </main>
     <Footer />
+
+    <ChatBotDysam />
+
   </body>
 </html>
